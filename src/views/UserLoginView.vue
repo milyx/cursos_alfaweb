@@ -49,8 +49,8 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
-//import router from "@/router";
 import NavBar from "@/components/NavBar.vue";
+import router from "@/router";
 export default {
   name: "UserLoginView",
   components: {
@@ -68,10 +68,11 @@ export default {
   methods: {
     ...mapActions(["startSession"]),
     starNow() {
-      this.startSession({
+      /*this.startSession({
         email: this.form.email,
         password: this.form.password,
-      });
+      });*/
+      router.push("/home");
     },
     //hacer evento reset
     resetNow() {

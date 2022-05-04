@@ -75,6 +75,8 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  next();
+  /*
   const isAuthenticated = localStorage.getItem("loggedIn");
   if (isAuthenticated === "true") {
     if (
@@ -97,5 +99,7 @@ router.beforeEach((to, from, next) => {
       next({ name: "logindirecto" });
     }
   }
+  */
 });
+
 export default router;
