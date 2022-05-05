@@ -151,6 +151,7 @@ export default {
       terminado: "",
       terminadoState: null,
       descripcion: "",
+      descripcionState: null,
     };
   },
   methods: {

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <NavBar />
-    <b-container>
-      <b-form @reset="onReset" v-if="show" class="form">
+    <b-container fluid="sm" class="form">
+      <b-form v-if="show">
+        <h1>Cursos Alfaweb</h1>
         <b-form-group
           id="input-group-1"
           label="Email:"
@@ -34,28 +34,32 @@
           ></b-form-input>
         </b-form-group>
       </b-form>
-
-      <b-col class="buttons">
-        <b-button type="button" @click="starNow" variant="primary" class="mx-4"
-          >Entrar</b-button
+      <div>
+        <b-col class="buttons">
+          <b-button
+            type="button"
+            @click="starNow"
+            variant="primary"
+            class="mx-4"
+            >Iniciar</b-button
+          >
+          <b-button type="reset" @click="resetNow" variant="danger"
+            >Limpiar Formulario</b-button
+          ></b-col
         >
-        <b-button type="reset" @click="resetNow()" variant="danger"
-          >Reset</b-button
-        ></b-col
-      >
+      </div>
+      <b-button type="button" @click="register" variant="light" class="button"
+        >Registrarse
+      </b-button>
     </b-container>
   </div>
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
-import NavBar from "@/components/NavBar.vue";
 import router from "@/router";
+import { mapActions } from "vuex";
 export default {
   name: "UserLoginView",
-  components: {
-    NavBar,
-  },
   data() {
     return {
       form: {
@@ -68,32 +72,44 @@ export default {
   methods: {
     ...mapActions(["startSession"]),
     starNow() {
-      /*this.startSession({
+      this.startSession({
         email: this.form.email,
         password: this.form.password,
-      });*/
-      router.push("/home");
+      });
     },
     //hacer evento reset
     resetNow() {
-      //console.log("hola");
       this.form.email = "";
       this.form.password = "";
     },
-  },
-  computed: {
-    ...mapState(["user"]),
+    register() {
+      router.push("/userregister");
+    },
   },
 };
 </script>
 <style>
-.form {
-  padding-top: 9rem;
-  width: 50rem;
+.content {
+  width: 50%;
   margin: auto;
+  padding-top: 7rem;
+}
+.form {
+  padding: 30px;
+  width: 35rem;
+  height: 28rem;
+  margin-top: 70px;
+  background-color: rgb(243, 243, 243);
 }
 .buttons {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
+}
+.button {
+  text-align: center;
+  background: rgb(185, 184, 184);
+  padding: 10px 10rem;
+  margin: 0 3rem;
 }
 </style>

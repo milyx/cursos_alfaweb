@@ -1,4 +1,3 @@
-//import app from "@/helpers/firebase";
 import router from "@/router";
 import Vue from "vue";
 import Vuex from "vuex";
@@ -87,24 +86,18 @@ export default new Vuex.Store({
     async startSession({ commit }, payload) {
       const email = payload.email;
       const password = payload.password;
-
       const auth = getAuth();
-
       try {
         const userCredential = await signInWithEmailAndPassword(
           auth,
           email,
           password
         );
-
         commit("SET_USER", true);
         commit("SET_USER_MAIL", payload.email);
         console.log({ userCredential });
         localStorage.setItem("loggedIn", "true");
-        router.push({ name: "home", force: true });
-        setTimeout(function () {
-          window.location.reload();
-        }, 2000);
+        router.push("/home");
       } catch (error) {
         alert("Usuario inválido");
         console.error(error);
@@ -114,13 +107,13 @@ export default new Vuex.Store({
     signOff({ commit }) {
       commit("SET_USER", false);
     },
-    createUser(payload) {
+    async createUser({ commit }, payload) {
       const email = payload.email;
       const password = payload.password;
-
+      console.log(commit);
       try {
         const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
+        await createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
             console.log(user);
@@ -129,7 +122,6 @@ export default new Vuex.Store({
           })
           .catch((error) => {
             console.log(error);
-
             alert("Ocurrió un error");
           });
       } catch (error) {
@@ -138,12 +130,10 @@ export default new Vuex.Store({
       }
     },
     async deleteItem({ commit }, payload) {
-      //console.log(payload);
       commit("DELETE_CURSO", payload.id);
       await deleteDoc(doc(db, "cursos", payload.id));
     },
     async saveData({ commit }, payload) {
-      //console.log(payload);
       try {
         const docRef = await addDoc(collection(db, "cursos"), payload);
         console.log(docRef.id);

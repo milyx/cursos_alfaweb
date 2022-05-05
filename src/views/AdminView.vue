@@ -27,32 +27,34 @@
         <b-col class="table">
           <div class="p-5">
             <b-alert show variant="primary"
-              >Cantidad total de alumnos permitidos:{{
-                datos.alumnosPermitidos
-              }}</b-alert
+              ><b-icon icon="people-fill" class="mx-3 py-3"></b-icon>Cantidad
+              total de alumnos permitidos:{{ datos.alumnosPermitidos }}</b-alert
             >
-            <b-alert show variant="secondary"
+            <b-alert show variant="secondary">
+              <b-icon icon="person-check-fill" class="mx-3 py-3"></b-icon
               >Cantidad total de alumnos inscritos:{{
                 datos.alumnosInscritos
               }}</b-alert
             >
             <b-alert show variant="success"
+              ><b-icon icon="person-dash-fill" class="mx-3 py-3"></b-icon
               >Cantidad total de cupos restantes:{{
                 datos.cuposRestantes
               }}</b-alert
             >
             <b-alert show variant="danger"
-              >Cantidad total de cursos terminados:{{
+              ><b-icon icon="slash-circle" class="mx-3 py-3"></b-icon>Cantidad
+              total de cursos terminados:{{
                 datos.totalCursosTerminados
               }}</b-alert
             >
             <b-alert show variant="warning"
-              >Cantidad total de cursos activos:{{
-                datos.totalCursosActivos
-              }}</b-alert
+              ><b-icon icon="bell-fill" class="mx-3 py-3"></b-icon>Cantidad
+              total de cursos activos:{{ datos.totalCursosActivos }}</b-alert
             >
             <b-alert show variant="info"
-              >Cantidad total de cursos:{{ datos.cursosTotales }}</b-alert
+              ><b-icon icon="people-fill" class="mx-3 py-3"></b-icon>Cantidad
+              total de cursos:{{ datos.cursosTotales }}</b-alert
             >
           </div>
         </b-col>
@@ -99,7 +101,7 @@ export default {
           parseInt(alumnosPermitidos) + parseInt(this.courses[i].cupos);
         alumnosInscritos =
           parseInt(alumnosInscritos) + parseInt(this.courses[i].inscritos);
-        if (this.courses[i].terminado == true) {
+        if (this.courses[i].terminado == "true") {
           totalCursosTerminados++;
         } else {
           totalCursosActivos++;

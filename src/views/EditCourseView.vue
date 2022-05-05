@@ -156,5 +156,6 @@ export default {
 .form {
   width: 60rem;
   margin: auto;
+  padding-top: 50px;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <b-navbar toggleable="false" type="dark" variant="secondary" class="button">
+    <b-navbar toggleable="false" type="dark" variant="secondary" class="nav">
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle
       ><span class="title">Cursos Alfaweb</span>
-      <b-navbar-brand @click="salir" href="#"
-        >{{ dato.usuario
+      <b-navbar-brand class="email" @click="salir" href="#"
+        >{{ user
         }}<b-icon icon="box-arrow-right" class="h2">></b-icon></b-navbar-brand
       >
       <b-collapse id="nav-collapse" is-nav>
@@ -24,15 +24,8 @@ import router from "@/router";
 import { mapActions, mapState } from "vuex";
 export default {
   name: "NavBar",
-
   computed: {
     ...mapState(["user"]),
-    //...mapGetters(["getUser"]),
-    dato: function () {
-      return {
-        usuario: this.user,
-      };
-    },
   },
   methods: {
     ...mapActions(["signOff"]),
@@ -45,16 +38,26 @@ export default {
 };
 </script>
 <style>
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .route {
   color: white;
   text-decoration: none;
   padding: 5px 20px;
 }
-.button {
+.nav {
   padding-left: 20px;
+  justify-content: space-between;
 }
 .title {
   color: aliceblue;
   font-size: 25px;
+  padding-left: 30px;
+}
+.email {
+  font-size: 13px;
 }
 </style>

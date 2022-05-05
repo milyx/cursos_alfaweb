@@ -5,6 +5,12 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/home",
+    name: "home",
+    component: () =>
+      import(/* webpackChunkName: "homepage" */ "../views/HomePageView.vue"),
+  },
+  {
     path: "/",
     name: "login",
     component: () =>
@@ -19,30 +25,10 @@ const routes = [
       ),
   },
   {
-    path: "/home",
-    name: "home",
-    component: () =>
-      import(/* webpackChunkName: "homepage" */ "../views/HomePageView.vue"),
-  },
-  {
-    path: "/about",
-    name: "about",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
-  {
     path: "/admin",
     name: "admin",
     component: () =>
       import(/* webpackChunkName: "admin" */ "../views/AdminView.vue"),
-  },
-  {
-    path: "/courselist",
-    name: "courselist",
-    component: () =>
-      import(
-        /* webpackChunkName: "courselist" */ "../views/CourseListView.vue"
-      ),
   },
   {
     path: "/editcourse/:editedId",
@@ -76,7 +62,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   next();
-  /*
+
   const isAuthenticated = localStorage.getItem("loggedIn");
   if (isAuthenticated === "true") {
     if (
@@ -99,7 +85,6 @@ router.beforeEach((to, from, next) => {
       next({ name: "logindirecto" });
     }
   }
-  */
 });
 
 export default router;
