@@ -77,7 +77,6 @@ export default {
         password: this.form.password,
       });
     },
-    //hacer evento reset
     resetNow() {
       this.form.email = "";
       this.form.password = "";

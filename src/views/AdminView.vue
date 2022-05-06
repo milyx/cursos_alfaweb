@@ -6,6 +6,9 @@
       <b-row>
         <b-col md="12">
           <b-table striped hover :items="courses" :fields="fields">
+            <template #cell(terminado)="row">
+              {{ row.item.terminado === "true" ? "Si" : "No" }}
+            </template>
             <template #cell(opciones)="row">
               <b-button
                 size="sm"
